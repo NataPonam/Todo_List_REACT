@@ -1,38 +1,200 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .App {
-  text-align: center;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-size: 1rem;
+  font-weight: 400;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul,
+li {
+  list-style-type: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+:root {
+  --main-bg-color: rgb(143, 108, 151);
+  --accent-color: rgb(181 232 192);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form__input.green {
+  background-color: var(--accent-color);
+}
+.page {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  box-sizing: border-box;
+  background-color: var(--main-bg-color);
+}
+.main {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: flex-start;
+  height: 90vh;
+  margin-top: 5vh;
+  flex: 1;
+}
+.todo {
+  border: 1px solid white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  justify-content: center;
+  padding: 10px;
+  min-width: 500px;
+  margin: 0 5px;
+}
+.todo__title {
   color: white;
+  text-align: center;
+}
+.todo__subtitle {
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 200;
+  color: white;
+  text-align: center;
+}
+/*инпут обертка*/
+.form {
+  position: relative;
+}
+/*инпут*/
+.form__input {
+  border: 1px solid var(--main-bg-color);
+  width: 100%;
+  height: 50px;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  border-radius: 5px;
+  padding: 6px 50px 5px 10px;
+  display: flex;
+  color: rgb(90, 85, 85);
 }
 
-.App-link {
-  color: #61dafb;
+/*квадрат*/
+.form__button {
+  width: 40px;
+  height: 40px;
+  background-color: var(--main-bg-color);
+  position: absolute;
+  border-radius: 5px;
+  border: none;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  background-image: url('../img/icon__plus.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 17px;
+}
+.form__button:hover {
+  background-color: rgb(128, 80, 139);
+  transition: 0.25s ease-in;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.todo__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.todo-card {
+  background: #ffffffb7;
+  border-radius: 5px;
+  padding: 6px 5px 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.checked {
+  text-decoration: line-through;
+}
+.todo-card__title {
+  color: rgb(90, 85, 85);
+  font-weight: 400;
+  font-size: 16px;
+  max-width: 350px;
+}
+
+.todo-card__controls {
+  display: flex;
+  gap: 5px;
+  background: none;
+  padding: 0;
+}
+.todo-card__button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--accent-color);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: var(--accent-color);
+}
+.todo-card__button:hover {
+  border: 1px solid white;
+  background-color: rgb(134, 228, 155);
+  /*background-color: rgb(249, 183, 98);*/
+  transition: 0.25s ease-in;
+}
+.todo-card__button_type_check {
+  background-image: url('../img/icon__check-mark.svg');
+}
+.todo-card__button_type_delete {
+  background-image: url('../img/icon__close_white.svg');
+}
+/*футер*/
+.footer {
+  height: 5vh;
+  margin-top: 5px;
+  text-align: center;
+  color: white;
+  flex: 0;
+}
+.footer__copyright {
+  padding: 10px;
+}
+/*скролл*/
+.todo__list::-webkit-scrollbar {
+  width: 15px;
+  background: var(--main-bg-color);
+  border-radius: 5px;
+}
+.todo__list::-webkit-scrollbar-track {
+  background: var(--main-bg-color);
+  border-radius: 5px;
+}
+.todo__list::-webkit-scrollbar-thumb {
+  border: 4px solid var(--main-bg-color);
+  background: var(--accent-color);
+  border-radius: 7px;
+}
+
+@media screen and (max-width: 530px) {
+  .todo {
+    min-width: calc(100% - 10px);
   }
-  to {
-    transform: rotate(360deg);
+  .todo-card__title {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .todo {
+    min-width: fit-content;
+  }
+  .todo-card__title {
+    font-size: 12px;
   }
 }
